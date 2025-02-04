@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/nogeese/mini.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNPL 1.0 License Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CNPL 1.0 License Generator</h1>
+
+    <label for="year">Year (default is current year):</label>
+    <input type="number" id="year" placeholder="Enter year">
+
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <label for="country">Governing Law (Country/State):</label>
+    <input type="text" id="country" placeholder="Enter your country or state">
+
+    <button onclick="generateLicense()">Generate License</button>
+
+    <h2>Generated License:</h2>
+    <pre id="licenseOutput"></pre>
+</div>
+
+<script>
+    function generateLicense() {
+        const currentYear = new Date().getFullYear();
+        const year = document.getElementById('year').value || currentYear;
+        const name = document.getElementById('name').value.trim();
+        const country = document.getElementById('country').value.trim();
+
+        if (!name || !country) {
+            alert("Please provide both your name and governing law location.");
+            return;
+        }
+
+        const licenseText = `
+Closed Nogeese Public License 1.0 (CNPL 1.0)
+
+Copyright (c) ${year} ${name}
+
+1. Preamble
+
+The Closed Nogeese Public License 1.0 (CNPL 1.0) is a closed-source software license designed to grant specific rights to licensees while maintaining strict control over distribution, modification, and usage of the Software. It aims to protect proprietary software while allowing permitted users to utilize it under defined conditions.
+
+2. Definitions
+
+- "Software" refers to the proprietary code and all associated files provided under this license.
+- "You" refers to the licensee—the individual or entity receiving permission to use the Software under this License.
+- "Authorized Users" refers to individuals or entities explicitly permitted to use the Software by the copyright holder.
+
+3. Grant of Rights
+
+You are granted a non-exclusive, non-transferable, revocable license to:
+
+- Use the Software for personal or internal business purposes only.
+- Install and run the Software on authorized devices.
+
+4. Restrictions
+
+You may not:
+
+- Copy, modify, distribute, sublicense, or sell the Software.
+- Reverse engineer, decompile, or attempt to extract the source code, except as permitted by applicable law.
+- Share, lend, lease, or make the Software available to third parties without explicit written permission from the copyright holder.
+- Use the Software for any illegal activities or in a manner that could harm the reputation of the Software or its creator.
+
+5. Ownership
+
+This License does not transfer ownership of the Software. The copyright holder retains all rights, title, and interest in the Software. Any unauthorized use constitutes a violation of this License and applicable intellectual property laws.
+
+6. Disclaimer of Warranty
+
+The Software is provided "as-is" without any warranties, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. The licensee assumes all risks associated with using the Software.
+
+7. Limitation of Liability
+
+In no event shall the copyright holder be liable for any damages, including but not limited to direct, indirect, incidental, or consequential damages, arising from the use or inability to use the Software.
+
+8. Termination
+
+This License is effective until terminated. It will automatically terminate if you breach any terms of this License. Upon termination, you must cease all use of the Software and delete all copies in your possession.
+
+9. Miscellaneous
+
+- Governing Law: This License shall be governed by and construed in accordance with the laws of ${country}.
+- Severability: If any provision of this License is found to be invalid or unenforceable by a court of law, the remaining provisions shall remain in effect.
+
+By using the Software, you acknowledge that you have read, understood, and agreed to the terms of this License.
+`;
+        
+        document.getElementById('licenseOutput').textContent = licenseText;
+    }
+</script>
+
+</body>
+</html>
