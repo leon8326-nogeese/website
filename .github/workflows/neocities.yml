@@ -1,0 +1,37 @@
+name: Deploy to neocities
+
+on:
+  push:
+    branches:
+      - main  # Change this if your default branch is named differently
+
+concurrency:
+  group: deploy-to-neocities
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Optionally, if you have a build process, set up Node.js and run your build commands.
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install deps and build
+      run: |
+        npm i
+        npm run build
+
+    # Deploy the contents of your "public/" folder to Neocities.
+    - name: Deploy to neocities
+      uses: bcomnes/deploy-to-neocities@v3
+      with:
+        api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
+        cleanup: true
+        neocities_supporter: false  # Set to true if you have a supporter account.
+        preview_before_deploy: true
+        dist_dir: public
