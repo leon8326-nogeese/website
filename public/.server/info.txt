@@ -1,0 +1,4 @@
+# Information About /.server/client/
+
+INFOSERVERRUNSON="Nogeese Linux Server Beta"
+INFOSERVERSSHCOMMANDER=https://leon8326-nogeese.github.io/webserver-ssh-commander/
