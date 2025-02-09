@@ -1,4 +1,4 @@
-# Information About /.server/client/
+# Information About /.server/login/
 
 INFOSERVERRUNSON="Nogeese Linux Server Beta"
-INFOSERVERSSHCOMMANDER=https://leon8326-nogeese.github.io/webserver-ssh-commander/
+INFOSERVERLOGINCLIENT=https://serverip:4200
